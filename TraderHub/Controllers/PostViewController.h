@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@import FirebaseDatabase;
 
 @interface PostViewController : UIViewController
+
+@property (weak, nonatomic) FIRDataSnapshot *snapshot;
 
 @end

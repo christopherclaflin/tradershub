@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewPostViewController.h"
 
 @interface NewPostAttachViewController : UIViewController
+
+@property (nonatomic, assign) id<AttachImageDelegate> delegate;
 
 @end

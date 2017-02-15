@@ -10,4 +10,6 @@
 
 @interface MessageListViewController : UIViewController
 
+@property (strong, nonatomic) NSString *targetUID;
+
 @end

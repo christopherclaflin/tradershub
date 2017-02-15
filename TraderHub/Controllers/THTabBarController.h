@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface THTabBarController : UITabBarController
-
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController;
 @end

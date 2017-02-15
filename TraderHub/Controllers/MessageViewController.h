@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageViewController : UIViewController
+@import FirebaseDatabase;
+@import JSQMessagesViewController;
 
+
+@interface MessageViewController : JSQMessagesViewController
+@property (strong, nonatomic) FIRDataSnapshot *snapshot;
+
+@property (strong, nonatomic) IBOutlet UILabel *lblTitle;
+@property (strong, nonatomic) IBOutlet UIButton *btnBack;
+
+@property (strong, nonatomic) NSString *opponentDisplayName;
+@property (strong, nonatomic) NSString *opponentPhotoURL;
+@property (strong, nonatomic) NSString *opponentUID;
 @end

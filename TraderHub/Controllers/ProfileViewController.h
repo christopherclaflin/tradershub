@@ -10,4 +10,6 @@
 
 @interface ProfileViewController : UIViewController
 
+@property (assign, nonatomic) BOOL isOther;
+@property (strong, nonatomic) NSString *uid;
 @end

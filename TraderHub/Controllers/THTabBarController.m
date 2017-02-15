@@ -7,8 +7,9 @@
 //
 
 #import "THTabBarController.h"
+#import "NewPostViewController.h"
 
-@interface THTabBarController ()
+@interface THTabBarController ()< UITabBarControllerDelegate>
 
 @end
 
@@ -17,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setDelegate:self];
+    
+    
+    //set background image
+    CGRect rect = [[UIScreen mainScreen] bounds];
+    UIImageView *tabBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, 49)];
+    tabBackground.image = [UIImage imageNamed:@"tabbar_back.png"];
+    tabBackground.contentMode = UIViewContentModeScaleAspectFill;
+    [self.tabBar insertSubview:tabBackground atIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +43,25 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    
+    UINavigationController *navigationController;
+    if([viewController isKindOfClass:[UINavigationController class]])
+        navigationController = (UINavigationController *)viewController;
+    
+    if  (navigationController && [navigationController.viewControllers[0] isKindOfClass:[NewPostViewController class]])  {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        NewPostViewController *postview = [storyboard instantiateViewControllerWithIdentifier:@"newpostview"];
+        
+        [self.selectedViewController pushViewController:postview animated:YES];
+        return NO;
+    }
+    return YES;
+}
+
+//- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+//    NSLog(@"didselectitem");
+//}
 
 @end

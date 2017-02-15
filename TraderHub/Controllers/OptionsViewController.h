@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OptionsViewController : UIViewController
+@interface OptionsViewController : UITableViewController
 
 @end

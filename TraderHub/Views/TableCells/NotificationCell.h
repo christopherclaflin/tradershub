@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface NotificationCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgUser;
+@property (weak, nonatomic) IBOutlet UILabel *lblNotif;
+@property (weak, nonatomic) IBOutlet UILabel *lblTime;
 
 @end
