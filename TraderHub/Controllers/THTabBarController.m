@@ -43,22 +43,22 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    
-    UINavigationController *navigationController;
-    if([viewController isKindOfClass:[UINavigationController class]])
-        navigationController = (UINavigationController *)viewController;
-    
-    if  (navigationController && [navigationController.viewControllers[0] isKindOfClass:[NewPostViewController class]])  {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        NewPostViewController *postview = [storyboard instantiateViewControllerWithIdentifier:@"newpostview"];
-        
-        [self.selectedViewController pushViewController:postview animated:YES];
-        return NO;
-    }
-    return YES;
-}
+//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+//    
+//    UINavigationController *navigationController;
+//    if([viewController isKindOfClass:[UINavigationController class]])
+//        navigationController = (UINavigationController *)viewController;
+//    
+//    if  (navigationController && [navigationController.viewControllers[0] isKindOfClass:[NewPostViewController class]])  {
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        
+//        NewPostViewController *postview = [storyboard instantiateViewControllerWithIdentifier:@"newpostview"];
+//        
+//        [self.selectedViewController pushViewController:postview animated:YES];
+//        return NO;
+//    }
+//    return YES;
+//}
 
 //- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
 //    NSLog(@"didselectitem");

@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>60357022070-713f60hrspv46hple07q4srhkjn7pnm8.apps.googleusercontent.com</string>
+	<string>934399651328-m9opku91hrjn9n5soofi6qv4f08eg1ds.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.60357022070-713f60hrspv46hple07q4srhkjn7pnm8</string>
+	<string>com.googleusercontent.apps.934399651328-m9opku91hrjn9n5soofi6qv4f08eg1ds</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDFBSWIQiq2z-Z8CetcFUfEwAeyCTFBoW4</string>
+	<string>AIzaSyAPR4Euk7pg4GcXwc95-t3Edx9p21mBD0Q</string>
 	<key>GCM_SENDER_ID</key>
-	<string>60357022070</string>
+	<string>934399651328</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.beta.TraderHub</string>
+	<string>com.app.tradershub</string>
 	<key>PROJECT_ID</key>
-	<string>traders-hub-8e703</string>
+	<string>traders-hub-7650c</string>
 	<key>STORAGE_BUCKET</key>
-	<string>traders-hub-8e703.appspot.com</string>
+	<string>traders-hub-7650c.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:60357022070:ios:109fc5d252c35157</string>
+	<string>1:934399651328:ios:371e93ef00f14b14</string>
 	<key>DATABASE_URL</key>
-	<string>https://traders-hub-8e703.firebaseio.com</string>
+	<string>https://traders-hub-7650c.firebaseio.com</string>
 </dict>
 </plist>

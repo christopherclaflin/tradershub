@@ -18,12 +18,12 @@
 
 @interface Constants : NSObject
 
-#define URL_HELP_CENTER     @"http://tradershub.com/help-center"
-#define URL_REPORT_PROBLEM  @"http://tradershub.com/report-a-problem"
-#define URL_LEARN_TO_TRADE  @"http://tradershub.com/learn-to-trade"
-#define URL_BLOG            @"http://tradershub.com/blog"
-#define URL_PRIVACY_POLICY  @"http://tradershub.com/privacy-plicy"
-#define URL_TERMS           @"http://tradershub.com/terms"
+#define URL_HELP_CENTER     @"https://tradershubapp.com/support"
+#define URL_REPORT_PROBLEM  @"https://tradershubapp.com/support"
+#define URL_LEARN_TO_TRADE  @"https://tradershubapp.com/learn-to-trade"
+#define URL_BLOG            @"https://tradershubapp.com/learn-to-trade"
+#define URL_PRIVACY_POLICY  @"https://tradershubapp.com/privacy"
+#define URL_TERMS           @"https://tradershubapp.com/terms-and-conditions"
 
 extern NSString *const NotificationKeysSignedIn;
 

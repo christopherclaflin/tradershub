@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KILabel.h"
 
 @protocol CommentCellDelegate <NSObject>
 - (void)didClickOnAvatar:(NSString *)uid;
@@ -17,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgUser;
 @property (weak, nonatomic) IBOutlet UILabel *lblDisplayName;
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
-@property (weak, nonatomic) IBOutlet UILabel *lblContent;
+@property (weak, nonatomic) IBOutlet KILabel *lblContent;
 
 @property (weak, nonatomic) id<CommentCellDelegate>delegate;
 

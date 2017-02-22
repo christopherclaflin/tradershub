@@ -56,15 +56,15 @@
 		88C384C01E1D092400ED4BFD /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C384BF1E1D092400ED4BFD /* NewPostViewController.m */; };
 		88CAEB741E1DC6C300E080A0 /* ic_email.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CAEB731E1DC6C300E080A0 /* ic_email.png */; };
 		88CCE84F1E2A7A4A005703BA /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCE84E1E2A7A4A005703BA /* ProfileTableViewCell.m */; };
+		88D3BD3F1E5695620017D8D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88D3BD3E1E5695620017D8D9 /* GoogleService-Info.plist */; };
 		88E320091E21090500F9D476 /* THTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E320081E21090500F9D476 /* THTabBarController.m */; };
 		88E3200C1E212EB700F9D476 /* NotificationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E3200B1E212EB700F9D476 /* NotificationItem.m */; };
 		88E3200F1E212F0C00F9D476 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E3200E1E212F0C00F9D476 /* NotificationCell.m */; };
 		88E320111E213F9B00F9D476 /* ic_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 88E320101E213F9B00F9D476 /* ic_settings.png */; };
-		88E329F21E278EAC007ACDB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E329F11E278EAC007ACDB4 /* GoogleService-Info.plist */; };
-		88E329F31E278EAC007ACDB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E329F11E278EAC007ACDB4 /* GoogleService-Info.plist */; };
-		88E329F41E278EAC007ACDB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E329F11E278EAC007ACDB4 /* GoogleService-Info.plist */; };
 		88E329F71E2796D9007ACDB4 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E329F61E2796D9007ACDB4 /* Common.m */; };
 		88E329FA1E279715007ACDB4 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E329F91E279715007ACDB4 /* Constants.m */; };
+		88E5F50A1E5DAF6200729430 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E5F5091E5DAF6200729430 /* CFNetwork.framework */; };
+		88E5F50C1E5DAF6C00729430 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E5F50B1E5DAF6C00729430 /* WebKit.framework */; };
 		88F229031E1F39B100E55ACB /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F229021E1F39B100E55ACB /* PostViewController.m */; };
 		88F229061E1F39EF00E55ACB /* NewPostAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F229051E1F39EF00E55ACB /* NewPostAttachViewController.m */; };
 		88F229091E1F3A8B00E55ACB /* MessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F229081E1F3A8B00E55ACB /* MessageListViewController.m */; };
@@ -173,6 +173,7 @@
 		88CAEB731E1DC6C300E080A0 /* ic_email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_email.png; sourceTree = "<group>"; };
 		88CCE84D1E2A7A4A005703BA /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileTableViewCell.h; path = Views/TableCells/ProfileTableViewCell.h; sourceTree = "<group>"; };
 		88CCE84E1E2A7A4A005703BA /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileTableViewCell.m; path = Views/TableCells/ProfileTableViewCell.m; sourceTree = "<group>"; };
+		88D3BD3E1E5695620017D8D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		88E320071E21090500F9D476 /* THTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = THTabBarController.h; path = Controllers/THTabBarController.h; sourceTree = "<group>"; };
 		88E320081E21090500F9D476 /* THTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = THTabBarController.m; path = Controllers/THTabBarController.m; sourceTree = "<group>"; };
 		88E3200A1E212EB700F9D476 /* NotificationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationItem.h; path = Models/NotificationItem.h; sourceTree = "<group>"; };
@@ -180,11 +181,12 @@
 		88E3200D1E212F0C00F9D476 /* NotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationCell.h; path = Views/TableCells/NotificationCell.h; sourceTree = "<group>"; };
 		88E3200E1E212F0C00F9D476 /* NotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationCell.m; path = Views/TableCells/NotificationCell.m; sourceTree = "<group>"; };
 		88E320101E213F9B00F9D476 /* ic_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_settings.png; sourceTree = "<group>"; };
-		88E329F11E278EAC007ACDB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		88E329F51E2796D9007ACDB4 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		88E329F61E2796D9007ACDB4 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		88E329F81E279715007ACDB4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		88E329F91E279715007ACDB4 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		88E5F5091E5DAF6200729430 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		88E5F50B1E5DAF6C00729430 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		88F229011E1F39B100E55ACB /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostViewController.h; path = Controllers/PostViewController.h; sourceTree = "<group>"; };
 		88F229021E1F39B100E55ACB /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostViewController.m; path = Controllers/PostViewController.m; sourceTree = "<group>"; };
 		88F229041E1F39EF00E55ACB /* NewPostAttachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPostAttachViewController.h; path = Controllers/NewPostAttachViewController.h; sourceTree = "<group>"; };
@@ -208,6 +210,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88E5F50C1E5DAF6C00729430 /* WebKit.framework in Frameworks */,
+				88E5F50A1E5DAF6200729430 /* CFNetwork.framework in Frameworks */,
 				889A4C3D1E31C34F004D3E13 /* FBSDKLoginKit.framework in Frameworks */,
 				889A4C3F1E31C482004D3E13 /* FBSDKCoreKit.framework in Frameworks */,
 				D51D1B880A42EFF3EE0D7B14 /* Pods_TraderHub.framework in Frameworks */,
@@ -237,6 +241,8 @@
 		127C6133AAED41650486BAF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88E5F50B1E5DAF6C00729430 /* WebKit.framework */,
+				88E5F5091E5DAF6200729430 /* CFNetwork.framework */,
 				1ECEDC77ACE0D8D30091E628 /* Pods_TraderHub.framework */,
 				31927022959DDA5340174E25 /* Pods_TraderHubTests.framework */,
 				06FFB7DF7485041BC37CDF69 /* Pods_TraderHubUITests.framework */,
@@ -300,7 +306,6 @@
 				882E16151E1C4594004F55D7 /* Supporting Files */,
 				882E16181E1C4594004F55D7 /* AppDelegate.h */,
 				882E16191E1C4594004F55D7 /* AppDelegate.m */,
-				88E329F11E278EAC007ACDB4 /* GoogleService-Info.plist */,
 				88E329F51E2796D9007ACDB4 /* Common.h */,
 				88E329F61E2796D9007ACDB4 /* Common.m */,
 				88E329F81E279715007ACDB4 /* Constants.h */,
@@ -312,6 +317,7 @@
 		882E16151E1C4594004F55D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				88D3BD3E1E5695620017D8D9 /* GoogleService-Info.plist */,
 				882E16261E1C4594004F55D7 /* Info.plist */,
 				882E16161E1C4594004F55D7 /* main.m */,
 			);
@@ -535,7 +541,7 @@
 				TargetAttributes = {
 					882E16111E1C4594004F55D7 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 64U342Z686;
+						DevelopmentTeam = G76CRXS388;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -587,7 +593,6 @@
 			files = (
 				88C384A71E1C8D3000ED4BFD /* ic_inc.png in Resources */,
 				88E320111E213F9B00F9D476 /* ic_settings.png in Resources */,
-				88E329F21E278EAC007ACDB4 /* GoogleService-Info.plist in Resources */,
 				88C384B21E1CE46000ED4BFD /* ic_list.png in Resources */,
 				88C384BD1E1CFFBE00ED4BFD /* ic_dropdown.png in Resources */,
 				88C2D7AD1E21CAC00024F5EC /* ic_logo.png in Resources */,
@@ -597,6 +602,7 @@
 				8812D27A1E2D20DB001A27F4 /* btn_more@3x.png in Resources */,
 				8812D2791E2D20DB001A27F4 /* avatar.png in Resources */,
 				8812D27C1E2D20DB001A27F4 /* img_placeholder.png in Resources */,
+				88D3BD3F1E5695620017D8D9 /* GoogleService-Info.plist in Resources */,
 				8812D27B1E2D20DB001A27F4 /* btn_profile@3x.png in Resources */,
 				882E16251E1C4594004F55D7 /* LaunchScreen.storyboard in Resources */,
 				8895922C1E3EE5920059EB1F /* tabbar_back@2x.png in Resources */,
@@ -619,7 +625,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E329F31E278EAC007ACDB4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +632,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E329F41E278EAC007ACDB4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,7 +958,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TraderHub/TraderHub.entitlements;
-				DEVELOPMENT_TEAM = 64U342Z686;
+				DEVELOPMENT_TEAM = G76CRXS388;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TraderHub/Frameworks",
@@ -979,7 +983,7 @@
 				);
 				INFOPLIST_FILE = TraderHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.beta.TraderHub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.tradershub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -990,7 +994,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TraderHub/TraderHub.entitlements;
-				DEVELOPMENT_TEAM = 64U342Z686;
+				DEVELOPMENT_TEAM = G76CRXS388;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TraderHub/Frameworks",
@@ -1015,7 +1019,7 @@
 				);
 				INFOPLIST_FILE = TraderHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.beta.TraderHub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.tradershub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

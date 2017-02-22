@@ -49,11 +49,12 @@
     else
         _lblTarget.text = @"#";
     
-    BOOL isSell = post[PostFieldsIsSell];
-    if(isSell) {
+    BOOL isSell = [post[PostFieldsIsSell] boolValue];
+    if(!isSell) {
         [_imgInc setImage:[UIImage imageNamed:@"ic_inc.png"]];
     } else {
         [_imgInc setImage:[UIImage imageNamed:@"ic_dec.png"]];
+        
     }
     
     _lblType.text = post[PostFieldsType];

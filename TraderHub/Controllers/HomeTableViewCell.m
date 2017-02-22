@@ -79,10 +79,10 @@
         }
         
         BOOL isSell = [info[PostFieldsIsSell] boolValue];
-        if(isSell) {
-            [_imgInc setImage:[UIImage imageNamed:@"ic_dec.png"]];
-        } else {
+        if(!isSell) {
             [_imgInc setImage:[UIImage imageNamed:@"ic_inc.png"]];
+        } else {
+            [_imgInc setImage:[UIImage imageNamed:@"ic_dec.png"]];
         }
         
         _lblType.text = info[PostFieldsType];

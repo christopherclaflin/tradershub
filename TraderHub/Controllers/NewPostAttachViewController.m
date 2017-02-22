@@ -63,7 +63,8 @@
             // time-consuming task
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                [SVProgressHUD showSuccessWithStatus:@"Posted successfully"];
+                [self.navigationController popViewControllerAnimated:NO];                
             });
         });
     }

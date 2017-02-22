@@ -24,7 +24,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtStopPrice;
 @property (weak, nonatomic) IBOutlet UITextField *txtProfitTarget;
 @property (weak, nonatomic) IBOutlet UISwitch *swProfitTarget;
-@property (weak, nonatomic) IBOutlet UISwitch *swSell;
+@property (weak, nonatomic) IBOutlet UIButton *btnBuy;
+@property (weak, nonatomic) IBOutlet UIButton *btnSel;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnTraderType;
 @property (weak, nonatomic) IBOutlet UILabel *lblMarket;
 
@@ -35,6 +37,8 @@
 @implementation NewPostViewController {
     NSArray         *vehiclesList;
     NSArray *traderTargetList;
+    
+    BOOL isSell;
 
     int indexOfVehicles;
     int indexOfForex;
@@ -52,6 +56,14 @@
     indexOfVehicles = indexOfForex = indexOfFutures = indexOfStock = indexOfTraderTarget = 0;
     
     _ref = [[FIRDatabase database] reference];
+    
+    _btnBuy.layer.cornerRadius = 3;
+    _btnBuy.clipsToBounds = YES;
+    
+    _btnSel.layer.cornerRadius = 3;
+    _btnSel.clipsToBounds = YES;
+    
+    [self updateSellButtons];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +81,21 @@
 }
 */
 - (IBAction)onCancelClicked:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self clearUI];
+    [self.tabBarController setSelectedIndex:0];
+}
+
+- (void)clearUI {
+    _lblMarket.text = @"EUR/USD";
+    isSell = FALSE;
+    [self updateSellButtons];
+    _txtStopPrice.text = @"";
+    _txtEntryPrice.text = @"";
+    _txtProfitTarget.text = @"";
+    _btnTraderType.titleLabel.text = @"Trade Type";
+    
+    [_swProfitTarget setOn:YES];
 }
 
 - (IBAction)onVehicleClicked:(id)sender {
@@ -156,7 +182,24 @@
         
     } origin:self.view];
 }
+- (IBAction)onBuy:(id)sender {
+    isSell = NO;
+    [self updateSellButtons];
+}
+- (IBAction)onSel:(id)sender {
+    isSell = YES;
+    [self updateSellButtons];
+}
 
+- (void)updateSellButtons {
+    if(isSell) {
+        _btnSel.backgroundColor = [UIColor redColor];
+        _btnBuy.backgroundColor = [UIColor grayColor];
+    } else {
+        _btnSel.backgroundColor = [UIColor grayColor];
+        _btnBuy.backgroundColor = [UIColor greenColor];
+    }
+}
 - (IBAction)onNext:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
@@ -220,7 +263,7 @@
     else
         mdata[PostFieldsIsTargetOn] = @"FALSE";
     
-    if(_swSell.isOn)
+    if(isSell)
         mdata[PostFieldsIsSell] = @"TRUE";
     else
         mdata[PostFieldsIsSell] = @"FALSE";
@@ -241,6 +284,9 @@
     
     // Push data to Firebase Database
     NSString *path = [NSString stringWithFormat:@"posts/%@", [FIRAuth auth].currentUser.uid];
+    [[[_ref child:path] childByAutoId] setValue:mdata];
+    
+    path = [NSString stringWithFormat:@"feeds/%@", [FIRAuth auth].currentUser.uid];
     [[[_ref child:path] childByAutoId] setValue:mdata];
     
     //notification data
@@ -265,6 +311,8 @@
             }
         }
     }];
+    
+    [self clearUI];
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

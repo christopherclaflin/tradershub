@@ -422,6 +422,15 @@
             cell.delegate = self;
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.lblContent.hashtagLinkTapHandler = ^(KILabel *label, NSString *string, NSRange range) {
+                NSLog(@"Hashtag tapped %@", string);
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                
+                SearchViewController *searchview = [storyboard instantiateViewControllerWithIdentifier:@"searchview"];
+                searchview.strSearch = string;
+                [self.navigationController pushViewController:searchview animated:YES];
+            };
             
             cell.accessoryType = 0;
             
