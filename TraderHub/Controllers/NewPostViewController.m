@@ -93,8 +93,7 @@
     _txtStopPrice.text = @"";
     _txtEntryPrice.text = @"";
     _txtProfitTarget.text = @"";
-    _btnTraderType.titleLabel.text = @"Trade Type";
-    
+    [_btnTraderType setTitle:@"Trade Type" forState:UIControlStateNormal];
     [_swProfitTarget setOn:YES];
 }
 

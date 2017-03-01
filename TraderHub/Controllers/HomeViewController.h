@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeViewController : UIViewController
-- (void)didClickOnCellWithData:(id)data;
+- (void)onMoreClicked:(id)data;
 - (void)didClickOnAvatar:(NSString *)uid;
 @end

@@ -64,7 +64,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
                 [SVProgressHUD showSuccessWithStatus:@"Posted successfully"];
-                [self.navigationController popViewControllerAnimated:NO];                
+                [self.navigationController popViewControllerAnimated:NO];
             });
         });
     }

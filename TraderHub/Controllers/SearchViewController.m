@@ -169,8 +169,8 @@
         
         NSDictionary<NSString *, NSString *> *post = snapshot.value;
         
-        if([post[PostFieldsContent] containsString:_strSearch] ||
-           [post[PostFieldsUsername] containsString:_strSearch]) {
+        if([post[PostFieldsContent].lowercaseString containsString:_strSearch.lowercaseString] ||
+           [post[PostFieldsUsername].lowercaseString containsString:_strSearch.lowercaseString]) {
             
             //check if private account
             NSMutableArray *array = [Common sharedInstance].privateAccounts;

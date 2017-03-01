@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "HomeTableViewCell.h"
+//#import "HomeTableViewCell.h"
 #import "MessageListViewController.h"
 #import "Post.h"
 #import "PostViewController.h"
@@ -15,6 +15,9 @@
 #import "Common.h"
 #import "ProfileViewController.h"
 #import "M13BadgeView/M13BadgeView.h"
+#import "CollectionViewCell.h"
+#import "HeaderCollectionViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @import Firebase;
 @import FirebaseDatabase;
@@ -22,7 +25,7 @@
 @import FirebaseRemoteConfig;
 @import FirebaseAuth;
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, HomeCellDelegate> {
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, FeedCollectionCellDelegate, FeedCollectionHeaderDelegate> {
     FIRDatabaseHandle _refHandle, _refHandleDelete;
     FIRDatabaseHandle _refHandleMsg;
     FIRDatabaseHandle _refHandleNotifAdd, _refHandleNotifDelete;
@@ -30,6 +33,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *btnMessage;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) FIRDatabaseReference *ref;
@@ -48,8 +52,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _table.delegate = self;
-    _table.dataSource = self;
+//    _table.delegate = self;
+//    _table.dataSource = self;
+    
+    _collectionView.dataSource = self;
+    _collectionView.delegate = self;
+    
+    [_collectionView registerNib:[UINib nibWithNibName:@"CollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"feedcontentcell"];
+    [_collectionView registerNib:[UINib nibWithNibName:@"HeaderCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"feedheadercell"];
     
     [self initData];
     
@@ -73,7 +83,9 @@
     
     _refHandle = [[_ref child:path] observeEventType:FIRDataEventTypeChildAdded withBlock:^(FIRDataSnapshot *snapshot) {
         [_feeds insertObject:snapshot atIndex:0];
-        [_table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation: UITableViewRowAnimationAutomatic];
+//        [_table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation: UITableViewRowAnimationAutomatic];
+        
+        [_collectionView reloadData];
     }];
     
     //observe server time offset
@@ -291,27 +303,27 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == _table) {
-        
-        static NSString *CellIdentifier = @"hometablecell";
-        
-        int row = (int)indexPath.row;
-        HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
-        // Unpack message from Firebase DataSnapshot
-        FIRDataSnapshot *feedSnapshot = _feeds[row];
-        [cell setCellData:feedSnapshot];
-        
-        cell.delegate = self;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        cell.accessoryType = 0;
-        
-        return cell;
-    }
-    return nil;
-}
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (tableView == _table) {
+//        
+//        static NSString *CellIdentifier = @"hometablecell";
+//        
+//        int row = (int)indexPath.row;
+//        HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//
+//        // Unpack message from Firebase DataSnapshot
+//        FIRDataSnapshot *feedSnapshot = _feeds[row];
+//        [cell setCellData:feedSnapshot];
+//        
+//        cell.delegate = self;
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        
+//        cell.accessoryType = 0;
+//        
+//        return cell;
+//    }
+//    return nil;
+//}
 
 - (void)initData{
     _feeds = [NSMutableArray array];
@@ -325,7 +337,151 @@
 
 
 
-- (void)didClickOnCellWithData:(id)data {
+
+- (IBAction)onMessagesClicked:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    MessageListViewController *msgview = [storyboard instantiateViewControllerWithIdentifier:@"messagelistview"];
+    [self.navigationController pushViewController:msgview animated:YES];
+}
+
+- (void)didClickOnAvatar:(NSString *)uid {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    ProfileViewController *profileview = [storyboard instantiateViewControllerWithIdentifier:@"profileview"];
+    profileview.uid = uid;
+    
+    if([uid isEqualToString:[FIRAuth auth].currentUser.uid]) {
+        profileview.isOther = NO;
+    } else {
+        profileview.isOther = YES;
+    }
+    [self.navigationController pushViewController:profileview animated:YES];
+}
+
+#pragma mark - Collection View Delegates
+
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return _feeds.count + 1;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FIRDataSnapshot *snapshot = _feeds[indexPath.section - 1];
+    PostViewController *postview = [storyboard instantiateViewControllerWithIdentifier:@"postview"];
+    postview.snapshot = snapshot;
+    
+    [self.navigationController pushViewController:postview animated:YES];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    long row = indexPath.section;
+    long col = indexPath.row;
+    
+    if(row == 0) {
+        if(col == 0) { //header
+            HeaderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"feedheadercell" forIndexPath:indexPath];
+//            cell.imgUserWidthConstraint.constant = 0;
+            cell.lblUsername.text = @"Signal";
+            cell.imgUser.image = nil;
+            
+            return cell;
+        } else {
+            CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"feedcontentcell" forIndexPath:indexPath];
+            
+            cell.btnMore.hidden = YES;
+            
+            cell.lblMarket.text = @"Market";
+            [cell.imgIncDec setImage:[UIImage imageNamed:@"ic_incdec.png"]];
+            cell.lblEntry.text = @"Entry";
+            cell.lblStop.text = @"Stop";
+            cell.lblTarget.text = @"Target";
+            cell.lblType.text = @"Type";
+            
+            return cell;
+        }
+    } else {
+        if(col == 0) {
+            HeaderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"feedheadercell" forIndexPath:indexPath];
+            cell.imgUserWidthConstraint.constant = 30;
+            
+            FIRDataSnapshot *feedSnapshot = _feeds[row-1];
+            NSDictionary *dic = feedSnapshot.value;
+            cell.lblUsername.text = dic[PostFieldsUsername];
+            cell.userID = dic[PostFieldsUid];
+            cell.delegate = self;
+            
+            NSString *photoURL = dic[PostFieldsPhotoUrl];
+            if (photoURL) {
+                if([photoURL containsString:@"gs://"]) {
+                    [[[FIRStorage storage] referenceForURL:photoURL] downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
+                        if(URL){
+                            [cell.imgUser sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"avatar.png"]];
+                        }
+                    }];
+                } else {
+                    NSURL *URL = [NSURL URLWithString:photoURL];
+                    if (URL) {
+                        [cell.imgUser sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"avatar.png"]];
+                    }
+                }
+            } else {
+                [cell.imgUser setImage:[UIImage imageNamed:@"avatar.png"]];
+            }
+            
+            
+            return cell;
+        } else {
+            
+            CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"feedcontentcell" forIndexPath:indexPath];
+            
+            cell.btnMore.hidden = NO;
+            
+            FIRDataSnapshot *feedSnapshot = _feeds[row-1];
+            NSDictionary *dic = feedSnapshot.value;
+            
+            cell.lblMarket.text = dic[PostFieldsMarket];
+            
+            BOOL isSell = [dic[PostFieldsIsSell] boolValue];
+            if(!isSell) {
+                [cell.imgIncDec setImage:[UIImage imageNamed:@"ic_inc.png"]];
+            } else {
+                [cell.imgIncDec setImage:[UIImage imageNamed:@"ic_dec.png"]];
+            }
+            
+            cell.lblEntry.text = dic[PostFieldsEntry];
+            cell.lblStop.text = dic[PostFieldsStop];
+            BOOL isTargetOn = [dic[PostFieldsIsTargetOn] boolValue];
+            
+            if(isTargetOn) {
+                NSNumber *target = dic[PostFieldsTarget];
+                cell.lblTarget.text = [NSString stringWithFormat:@"%.2f", target.floatValue];
+            } else {
+                cell.lblTarget.text = @"#";
+            }
+            
+            cell.lblType.text = dic[PostFieldsType];
+            cell.data = feedSnapshot;
+            cell.delegate = self;
+            
+            return cell;            
+        }
+    }
+    
+    return nil;
+}
+
+////collection content cell delegate
+//- (void) onMoreClicked:(id)data {
+//    
+//}
+
+- (void)onMoreClicked:(id)data {
     FIRDataSnapshot *snapshot = data;
     
     NSDictionary *post;
@@ -342,49 +498,49 @@
     BOOL isNotifTurnedOn = [[Common sharedInstance] isNotifTurnedOnForUser:uid];
     
     UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:nil
-                                                         message:nil
-                                                  preferredStyle:UIAlertControllerStyleActionSheet];
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
     //Create an action
     UIAlertAction *sendMessage = [UIAlertAction actionWithTitle:@"Send Message"
-                                                     style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction *action)
-                             {
-                                 NSLog(@"Send Message");
-                                 
-                                 
-                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                 
-                                 MessageListViewController *messagelistview = [storyboard instantiateViewControllerWithIdentifier:@"messagelistview"];
-                                 messagelistview.targetUID = uid;
-                                 [self.navigationController pushViewController:messagelistview animated:YES];
-                                 
-                             }];
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action)
+                                  {
+                                      NSLog(@"Send Message");
+                                      
+                                      
+                                      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                      
+                                      MessageListViewController *messagelistview = [storyboard instantiateViewControllerWithIdentifier:@"messagelistview"];
+                                      messagelistview.targetUID = uid;
+                                      [self.navigationController pushViewController:messagelistview animated:YES];
+                                      
+                                  }];
     UIAlertAction *viewPost = [UIAlertAction actionWithTitle:@"View Post"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction *action)
-                                   {
-                                       NSLog(@"View Post");
-                                       UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                       
-                                       PostViewController *postview = [storyboard instantiateViewControllerWithIdentifier:@"postview"];
-                                       postview.snapshot = snapshot;
-                                       
-                                       [self.navigationController pushViewController:postview animated:YES];
-//                                       [self presentViewController:postview animated:YES completion:nil];
-                                   }];
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action)
+                               {
+                                   NSLog(@"View Post");
+                                   UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                   
+                                   PostViewController *postview = [storyboard instantiateViewControllerWithIdentifier:@"postview"];
+                                   postview.snapshot = snapshot;
+                                   
+                                   [self.navigationController pushViewController:postview animated:YES];
+                                   //                                       [self presentViewController:postview animated:YES completion:nil];
+                               }];
     
     NSString *title = isNotifTurnedOn ? @"Turn Off Notifications" : @"Turn On Notifications";
     
     UIAlertAction *turnOnNotif = [UIAlertAction actionWithTitle:title
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction *action)
-                               {
-                                   if(isNotifTurnedOn) {
-                                       [[Common sharedInstance] turnOffNotifForUser:uid];
-                                   } else {
-                                       [[Common sharedInstance] turnOnNotifForUser:uid];
-                                   }
-                               }];
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action)
+                                  {
+                                      if(isNotifTurnedOn) {
+                                          [[Common sharedInstance] turnOffNotifForUser:uid];
+                                      } else {
+                                          [[Common sharedInstance] turnOnNotifForUser:uid];
+                                      }
+                                  }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
                                                      style:UIAlertActionStyleCancel
@@ -401,22 +557,6 @@
     [alertCtrl addAction:cancel];
     
     [self presentViewController:alertCtrl animated:YES completion:nil];
-}
-
-- (IBAction)onMessagesClicked:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    MessageListViewController *msgview = [storyboard instantiateViewControllerWithIdentifier:@"messagelistview"];
-    [self.navigationController pushViewController:msgview animated:YES];
-}
-
-- (void)didClickOnAvatar:(NSString *)uid {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    ProfileViewController *profileview = [storyboard instantiateViewControllerWithIdentifier:@"profileview"];
-    profileview.uid = uid;
-    profileview.isOther = YES;
-    [self.navigationController pushViewController:profileview animated:YES];
 }
 
 @end

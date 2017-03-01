@@ -150,7 +150,7 @@
     mdata[UserFieldsPhotoURL] = photoURL;
     
     NSString *path = [NSString stringWithFormat:@"users/%@", [FIRAuth auth].currentUser.uid];
-    [[_ref child:path] setValue:mdata];
+    [[_ref child:path] updateChildValues:mdata];
     
     FIRUserProfileChangeRequest *changeRequest = [[FIRAuth auth].currentUser profileChangeRequest];
     changeRequest.displayName = _txtName.text;

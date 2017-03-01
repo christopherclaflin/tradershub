@@ -54,6 +54,8 @@
 		88C384BB1E1CE8D900ED4BFD /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C384BA1E1CE8D900ED4BFD /* SearchViewController.m */; };
 		88C384BD1E1CFFBE00ED4BFD /* ic_dropdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C384BC1E1CFFBE00ED4BFD /* ic_dropdown.png */; };
 		88C384C01E1D092400ED4BFD /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C384BF1E1D092400ED4BFD /* NewPostViewController.m */; };
+		88CA874C1E5E861800A59534 /* HeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CA874A1E5E861800A59534 /* HeaderCollectionViewCell.m */; };
+		88CA874D1E5E861800A59534 /* HeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CA874B1E5E861800A59534 /* HeaderCollectionViewCell.xib */; };
 		88CAEB741E1DC6C300E080A0 /* ic_email.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CAEB731E1DC6C300E080A0 /* ic_email.png */; };
 		88CCE84F1E2A7A4A005703BA /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCE84E1E2A7A4A005703BA /* ProfileTableViewCell.m */; };
 		88D3BD3F1E5695620017D8D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88D3BD3E1E5695620017D8D9 /* GoogleService-Info.plist */; };
@@ -72,6 +74,9 @@
 		88F2290F1E1F3BB400E55ACB /* ProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F2290E1E1F3BB400E55ACB /* ProfileEditViewController.m */; };
 		88F229121E1F3C9100E55ACB /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F229111E1F3C9100E55ACB /* ProfileViewController.m */; };
 		88F229151E1F3DDF00E55ACB /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F229141E1F3DDF00E55ACB /* OptionsViewController.m */; };
+		88FC98311E5E80310026DA9D /* CustomCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FC98301E5E80310026DA9D /* CustomCollectionViewLayout.m */; };
+		88FC98351E5E81D30026DA9D /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FC98331E5E81D30026DA9D /* CollectionViewCell.m */; };
+		88FC98361E5E81D30026DA9D /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88FC98341E5E81D30026DA9D /* CollectionViewCell.xib */; };
 		9CEAFF90B6BB267B1A070257 /* Pods_TraderHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31927022959DDA5340174E25 /* Pods_TraderHubTests.framework */; };
 		D51D1B880A42EFF3EE0D7B14 /* Pods_TraderHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ECEDC77ACE0D8D30091E628 /* Pods_TraderHub.framework */; };
 /* End PBXBuildFile section */
@@ -170,6 +175,9 @@
 		88C384BC1E1CFFBE00ED4BFD /* ic_dropdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_dropdown.png; sourceTree = "<group>"; };
 		88C384BE1E1D092400ED4BFD /* NewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPostViewController.h; path = Controllers/NewPostViewController.h; sourceTree = "<group>"; };
 		88C384BF1E1D092400ED4BFD /* NewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPostViewController.m; path = Controllers/NewPostViewController.m; sourceTree = "<group>"; };
+		88CA87491E5E861800A59534 /* HeaderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionViewCell.h; sourceTree = "<group>"; };
+		88CA874A1E5E861800A59534 /* HeaderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionViewCell.m; sourceTree = "<group>"; };
+		88CA874B1E5E861800A59534 /* HeaderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCollectionViewCell.xib; sourceTree = "<group>"; };
 		88CAEB731E1DC6C300E080A0 /* ic_email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_email.png; sourceTree = "<group>"; };
 		88CCE84D1E2A7A4A005703BA /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileTableViewCell.h; path = Views/TableCells/ProfileTableViewCell.h; sourceTree = "<group>"; };
 		88CCE84E1E2A7A4A005703BA /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileTableViewCell.m; path = Views/TableCells/ProfileTableViewCell.m; sourceTree = "<group>"; };
@@ -202,6 +210,11 @@
 		88F229131E1F3DDF00E55ACB /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionsViewController.h; path = Controllers/OptionsViewController.h; sourceTree = "<group>"; };
 		88F229141E1F3DDF00E55ACB /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionsViewController.m; path = Controllers/OptionsViewController.m; sourceTree = "<group>"; };
 		88FA4BA51E27F7510054C7C6 /* TraderHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TraderHub.entitlements; sourceTree = "<group>"; };
+		88FC982F1E5E80310026DA9D /* CustomCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCollectionViewLayout.h; path = Views/CustomViews/CustomCollectionViewLayout.h; sourceTree = "<group>"; };
+		88FC98301E5E80310026DA9D /* CustomCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCollectionViewLayout.m; path = Views/CustomViews/CustomCollectionViewLayout.m; sourceTree = "<group>"; };
+		88FC98321E5E81D30026DA9D /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = Views/CustomViews/CollectionViewCell.h; sourceTree = "<group>"; };
+		88FC98331E5E81D30026DA9D /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewCell.m; path = Views/CustomViews/CollectionViewCell.m; sourceTree = "<group>"; };
+		88FC98341E5E81D30026DA9D /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewCell.xib; path = Views/CustomViews/CollectionViewCell.xib; sourceTree = "<group>"; };
 		C67F24270CA0C99F49DD96C7 /* Pods-TraderHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraderHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-TraderHub/Pods-TraderHub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -414,6 +427,7 @@
 		882E164A1E1C45CC004F55D7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				88FC982E1E5E80220026DA9D /* CollectionView */,
 				88C3849C1E1C7CF000ED4BFD /* TableCells */,
 				882E16231E1C4594004F55D7 /* LaunchScreen.storyboard */,
 				882E161E1E1C4594004F55D7 /* Main.storyboard */,
@@ -463,6 +477,21 @@
 				880637281E35985B008F453D /* PostViewCommentCell.m */,
 			);
 			name = TableCells;
+			sourceTree = "<group>";
+		};
+		88FC982E1E5E80220026DA9D /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				88FC982F1E5E80310026DA9D /* CustomCollectionViewLayout.h */,
+				88FC98301E5E80310026DA9D /* CustomCollectionViewLayout.m */,
+				88FC98321E5E81D30026DA9D /* CollectionViewCell.h */,
+				88FC98331E5E81D30026DA9D /* CollectionViewCell.m */,
+				88FC98341E5E81D30026DA9D /* CollectionViewCell.xib */,
+				88CA87491E5E861800A59534 /* HeaderCollectionViewCell.h */,
+				88CA874A1E5E861800A59534 /* HeaderCollectionViewCell.m */,
+				88CA874B1E5E861800A59534 /* HeaderCollectionViewCell.xib */,
+			);
+			name = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -606,6 +635,7 @@
 				8812D27B1E2D20DB001A27F4 /* btn_profile@3x.png in Resources */,
 				882E16251E1C4594004F55D7 /* LaunchScreen.storyboard in Resources */,
 				8895922C1E3EE5920059EB1F /* tabbar_back@2x.png in Resources */,
+				88CA874D1E5E861800A59534 /* HeaderCollectionViewCell.xib in Resources */,
 				882E16221E1C4594004F55D7 /* Assets.xcassets in Resources */,
 				884741741E1DE3C100206C65 /* ic_plus.png in Resources */,
 				882892151E21C1BE005CA3AC /* btn_home@3x.png in Resources */,
@@ -613,6 +643,7 @@
 				88C2D7B11E21E99C0024F5EC /* upload_placeholder.png in Resources */,
 				882892161E21C1BE005CA3AC /* btn_newpost@3x.png in Resources */,
 				882892191E21C1BE005CA3AC /* btn_search@3x.png in Resources */,
+				88FC98361E5E81D30026DA9D /* CollectionViewCell.xib in Resources */,
 				882892171E21C1BE005CA3AC /* btn_notif@3x.png in Resources */,
 				8812D27E1E2D2DAE001A27F4 /* ic_dec.png in Resources */,
 				88C2D7AF1E21E3BD0024F5EC /* splash.png in Resources */,
@@ -794,6 +825,7 @@
 				8819C7451E20775500444F16 /* MessageViewController.m in Sources */,
 				88C384B81E1CE59000ED4BFD /* PostCollectionViewCell.m in Sources */,
 				880B597A1E39DF49008DC2EB /* ChangePasswordViewController.m in Sources */,
+				88CA874C1E5E861800A59534 /* HeaderCollectionViewCell.m in Sources */,
 				886393781E1EC4280025EFE0 /* SignupViewController.m in Sources */,
 				882E161A1E1C4594004F55D7 /* AppDelegate.m in Sources */,
 				88C384BB1E1CE8D900ED4BFD /* SearchViewController.m in Sources */,
@@ -801,6 +833,8 @@
 				88F229121E1F3C9100E55ACB /* ProfileViewController.m in Sources */,
 				88E329F71E2796D9007ACDB4 /* Common.m in Sources */,
 				88F229061E1F39EF00E55ACB /* NewPostAttachViewController.m in Sources */,
+				88FC98311E5E80310026DA9D /* CustomCollectionViewLayout.m in Sources */,
+				88FC98351E5E81D30026DA9D /* CollectionViewCell.m in Sources */,
 				88C3849F1E1C7D2500ED4BFD /* HomeTableViewCell.m in Sources */,
 				8863937B1E1EC4550025EFE0 /* LoginViewController.m in Sources */,
 				880637291E35985B008F453D /* PostViewCommentCell.m in Sources */,

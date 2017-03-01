@@ -141,7 +141,7 @@
     }
     
     NSString *path = [NSString stringWithFormat:@"users/%@", [FIRAuth auth].currentUser.uid];
-    [[_ref child:path] setValue:mdata];
+    [[_ref child:path] updateChildValues:mdata];
     
     NSString *topic = [NSString stringWithFormat:@"/topics/user%@", [FIRAuth auth].currentUser.uid];
     [[FIRMessaging messaging] subscribeToTopic:topic];

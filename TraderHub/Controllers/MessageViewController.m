@@ -87,7 +87,7 @@
     UIView *navView = [[UIView alloc] initWithFrame:rect];
     [self.view addSubview:navView];
     
-    [navView setBackgroundColor:[UIColor colorWithRed:0.92 green:0.92 blue:0.94 alpha:1.0f]];
+    [navView setBackgroundColor:[UIColor colorWithRed:0.22f green:0.67f blue:0.24f alpha:1.0f]];
     
     rect = CGRectMake(14, 32, 27, 30);
     _btnBack = [[UIButton alloc] initWithFrame:rect];
@@ -112,7 +112,7 @@
 }
 
 - (void)dealloc {
-    NSString *path = [NSString stringWithFormat:@"users/%@", [FIRAuth auth].currentUser.uid];
+    NSString *path = [NSString stringWithFormat:@"messages/%@", [FIRAuth auth].currentUser.uid];
     [[_messagesRef child:path] removeObserverWithHandle:_newMessageRefHandle];
     
     [[_messagesRef child:path] removeObserverWithHandle:_updatedMessageRefHandle];
